@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nada</title>
+	<link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIhxbezLAZFi6Ef_MLzhmCy-ANZmAiEsFr6g&usqp=CAU">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ 	<script>
+		$(document).ready(function(){
+		$("button").click(function(){
+		var n1 =  $("#n1").val();
+		var n2 =  $("#n2").val();
+		var n3 =  parseInt($("#n3").val());
+					$.ajax({
+			   		url: "nada.php",
+			   		type: "POST",
+			   		data: "n1="+n1+"&n2="+n2+"&n3="+n3,
+			    	dataType: "html"
+			}).done(function(resposta) {
+			    $("div").html(resposta);
+			}).fail(function(jqXHR, textStatus ) {
+			    console.log("Request failed: " + textStatus);
+			}).always(function() {
+			    console.log("Foi");
+          });
+          })
+		})
+	</script>
+</head>
+<body>
+    <input type="text" name="" id="n1" placeholder="nome">
+    <input type="text" name="" id="n2" placeholder="sobrenome">
+    <input type="number" name="" id="n3" placeholder="ano de nascimento">
+    <button>clicar</button>
+    <div></div>
+</body>
+</html>

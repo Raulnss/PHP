@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         $("button").click(function(){
+         var email =  $("#n1").val();
+         var senha =  $("#n2").val();
+                $.ajax({
+                   url: "inicio.php",
+                   type: "POST",
+                   data: "email="+email+"&senha="+senha,
+                dataType: "html"
+        }).done(function(resposta) {
+            if (resposta == "ok") {
+                window.location.href = "teste.html";
+            } else {
+                $("div").html(resposta);
+            }
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+        }).always(function() {
+            console.log("Foi");
+      });
+      })
+    })
+    </script>
+</head>
+<body>
+    <center>
+    <p>
+        Email: <input type="email" name="" id="n1">
+    </p>
+    <p>
+        Senha: <input type="password" name="" id="n2">
+    </p>
+    <button>Entrar</button>
+    <div></div>
+</center>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script src="js/jquery-3.6.4.min.js"></script>
+ 	<script>
+		$(document).ready(function(){
+			
+
+		$("#enviar").click(function(){
+		var n1 =  $("#nome").val();
+		var n2 =  $("#nomeuser").val();
+		var n3 =  $("#email").val();
+		var n4 =  $("#senha").val();
+
+					$.ajax({
+			   		url: "teste.php",
+			   		type: "POST",
+			   		data: "nmcompleto="+n1+"&usuario="+n2+"&email="+n3+"&senha="+n4,
+			    	dataType: "html"
+
+			}).done(function(resposta) {
+			    $(p).html(resposta);
+
+			}).fail(function(jqXHR, textStatus ) {
+			    console.log("Request failed: " + textStatus);
+
+			}).always(function() {
+			    console.log("Foi");
+				
+
+          });
+
+          })
+		})
+
+	</script>
+</head>
+<body>
+<input type="text" name="" id="nome" placeholder="nome">
+<input type="text" name="" id="nomeuser" placeholder="nome de usuario">
+<input type="text" name="" id="email" placeholder="email">
+<input type="text" name="" id="senha" placeholder="senha">
+<button name="" id="enviar">enviar</button>
+</body>
+</html>

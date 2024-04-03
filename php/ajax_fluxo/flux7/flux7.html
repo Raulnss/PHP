@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+ 	<script>
+		$(document).ready(function(){
+		$("button").click(function(){
+		var n1 =  $("#n1").val();
+		var n2 =  $("#n2").val();
+		var n3 =  $("#n3").val();
+					$.ajax({
+			   		url: "flux7.php",
+			   		type: "POST",
+			   		data: "n1="+n1+"&n2="+n2+"&n3="+n3,
+			    	dataType: "html"
+			}).done(function(resposta) {
+			    $("div").html(resposta);
+			}).fail(function(jqXHR, textStatus ) {
+			    console.log("Request failed: " + textStatus);
+			}).always(function() {
+			    console.log("Foi");
+          });
+          })
+		})
+	</script>
+</head>
+<body>
+    <input type="text" name="" id="n1">
+    <button>clicar</button>
+    <div></div>
+</body>
+</html>
